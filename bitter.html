@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bitter - Like Coffee – Educational Social App Mockup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --sky: #66b9ff;
+      --sky-light: #e8f4ff;
+      --sky-dark: #2b7cbc;
+      --bg: #f5f7fb;
+      --text-main: #133143;
+      --text-muted: #4f6b7f;
+      --radius-xl: 26px;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #ffffff 0, #eef2f7 40%, #dee6f2 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    /* Top bar */
+    header.app-header {
+      background: var(--sky);
+      color: #ffffff;
+      padding: 14px 24px;
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    header.app-header small {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    /* App shell */
+    .app-shell {
+      flex: 1;
+      display: flex;
+      gap: 16px;
+      padding: 16px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto 16px auto;
+    }
+
+    /* Left sidebar */
+    aside.sidebar {
+      width: 230px;
+      min-width: 210px;
+      max-width: 260px;
+      background: var(--sky);
+      border-radius: var(--radius-xl);
+      padding: 16px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-panel {
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: var(--radius-xl);
+      padding: 14px 12px;
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-panel h2 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .user-summary {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .user-summary .name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .user-summary .handle {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .user-stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      margin-top: 4px;
+    }
+
+    .other-users-list {
+      list-style: none;
+      font-size: 0.85rem;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .other-users-list li {
+      padding: 6px 6px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+
+    .other-users-list li span.handle {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .other-users-list li:hover {
+      background: var(--sky-light);
+      transform: translateY(-1px);
+    }
+
+    .menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .menu-buttons button {
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      border: none;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: var(--sky);
+      color: #ffffff;
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+
+    .menu-buttons button:hover {
+      background: var(--sky-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Main content area */
+    main.main-feed {
+      flex: 1;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      position: relative;
+    }
+
+    .feed-inner-frame {
+      border-radius: var(--radius-xl);
+      padding: 16px;
+      background: var(--bg);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Highlighted content bar */
+    .highlighted {
+      background: var(--sky);
+      color: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 14px 18px;
+      font-weight: 500;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+    }
+
+    .highlighted-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      opacity: 0.92;
+    }
+
+    .highlighted-body {
+      font-size: 0.95rem;
+    }
+
+    /* Composer */
+    .composer {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .composer label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .composer textarea {
+      width: 100%;
+      min-height: 60px;
+      resize: vertical;
+      border-radius: var(--radius-md);
+      border: 1px solid #c3d3e6;
+      padding: 6px 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+
+    .composer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .composer-row small {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .composer button {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background: var(--sky);
+      color: #ffffff;
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.15s ease, transform 0.05s ease;
+    }
+
+    .composer button:hover {
+      background: var(--sky-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Content feed */
+    .feed-heading {
+      text-align: center;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .feed-scroll {
+      margin-top: 4px;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* “Speech bubble” cards */
+    .post {
+      position: relative;
+      background: var(--sky);
+      border-radius: var(--radius-lg);
+      padding: 10px 12px 10px 14px;
+      max-width: 88%;
+      color: #ffffff;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+      font-size: 0.9rem;
+    }
+
+    .post::after {
+      content: "";
+      position: absolute;
+      right: -16px;
+      top: 18px;
+      border-width: 8px 0 8px 16px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--sky);
+    }
+
+    .post-meta {
+      font-size: 0.75rem;
+      opacity: 0.92;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .post .handle {
+      font-weight: 600;
+    }
+
+    .post-body {
+      line-height: 1.35;
+    }
+
+    .post.alt {
+      margin-left: auto;
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--sky);
+    }
+
+    .post.alt::after {
+      left: -16px;
+      right: auto;
+      border-width: 8px 16px 8px 0;
+      border-color: transparent var(--sky) transparent transparent;
+    }
+
+    /* Simple vertical “scroll bar” hint on the right side */
+    .scroll-bar-hint {
+      width: 18px;
+      border-radius: var(--radius-xl);
+      background: var(--sky);
+      margin-left: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+      color: #ffffff;
+      font-size: 0.7rem;
+      gap: 6px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+    }
+
+    .scroll-arrow {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+    }
+
+    .scroll-arrow.up {
+      border-bottom: 8px solid #ffffff;
+    }
+
+    .scroll-arrow.down {
+      border-top: 8px solid #ffffff;
+    }
+
+    /* Footer / references */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto 18px auto;
+      padding: 0 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer h2 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    footer ol {
+      padding-left: 18px;
+      line-height: 1.4;
+    }
+
+    footer li {
+      margin-bottom: 2px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      .app-shell {
+        flex-direction: column;
+      }
+      aside.sidebar {
+        width: 100%;
+        max-width: none;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-between;
+      }
+      .sidebar-panel {
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header.app-header {
+        border-radius: 0;
+      }
+      .app-shell {
+        padding: 10px;
+      }
+      aside.sidebar {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="app-header">
+    Application Name: Bitter
+    <small>Web-first social interface &mdash; non-commercial educational demo</small>
+  </header>
+
+  <div class="app-shell">
+    <!-- Left column: user info, other users, menu -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <section class="sidebar-panel" aria-label="User information">
+        <h2>User Info</h2>
+        <div class="user-summary">
+          <div class="name" id="currentUserName">Demo Learner</div>
+          <div class="handle" id="currentUserHandle">@demo_learner</div>
+          <p id="currentUserBio">
+            Practicing front-end development with an educational Bitter clone.
+          </p>
+          <div class="user-stats">
+            <span><strong id="statPosts">3</strong> posts</span>
+            <span><strong>12</strong> following</span>
+            <span><strong>7</strong> followers</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-panel" aria-label="Other users">
+        <h2>Other Users</h2>
+        <ul class="other-users-list" id="otherUsersList">
+          <!-- Filled by JavaScript -->
+        </ul>
+      </section>
+
+      <section class="sidebar-panel" aria-label="Menu">
+        <h2>Menu</h2>
+        <div class="menu-buttons">
+          <button type="button" id="btnLogin">Login</button>
+          <button type="button" id="btnLogout" disabled>Logout</button>
+          <button type="button" id="btnSettings">Settings</button>
+        </div>
+        <small style="margin-top:6px; display:block; color:var(--text-muted);">
+          This mockup does not send data to any server. It is safe for classroom demonstrations.
+        </small>
+      </section>
+    </aside>
+
+    <!-- Center: main content / feed -->
+    <main class="main-feed" aria-label="Main content">
+      <div class="feed-inner-frame">
+        <!-- Highlighted content -->
+        <section class="highlighted" aria-label="Highlighted content">
+          <div class="highlighted-title">Highlighted Content</div>
+          <div class="highlighted-body" id="highlightedBody">
+            Welcome to Bitter. This panel shows a featured post that an instructor or moderator
+            selects for discussion.
+          </div>
+        </section>
+
+        <!-- Composer -->
+        <section class="composer" aria-label="Create a new post">
+          <label for="newPostText">Share a new “Bitter” (short thought or observation):</label>
+          <textarea id="newPostText" maxlength="280"
+            placeholder="Example: Exploring HTML, CSS Flexbox, and JavaScript event handling today..."></textarea>
+          <div class="composer-row">
+            <small id="charCount">0 / 280 characters</small>
+            <button type="button" id="btnPost">Post to feed</button>
+          </div>
+        </section>
+
+        <div class="feed-heading">Content Feed</div>
+
+        <!-- Scrollable feed -->
+        <section class="feed-scroll" id="feedScroll" aria-label="Content feed">
+          <!-- Posts are injected here -->
+        </section>
+      </div>
+    </main>
+
+    <!-- Right: stylized scroll bar hint to match sketch -->
+    <div class="scroll-bar-hint" aria-hidden="true">
+      <div class="scroll-arrow up"></div>
+      <div>scroll</div>
+      <div class="scroll-arrow down"></div>
+    </div>
+  </div>
+
+  <!-- Simple front-end logic, no network calls -->
+  <script>
+    // Demo data
+    const demoUsers = [
+      { name: "Ada", handle: "@ada_codes" },
+      { name: "Sam", handle: "@sam_student" },
+      { name: "Lee", handle: "@lee_designs" },
+      { name: "Ravi", handle: "@ravi_research" },
+      { name: "Amira", handle: "@amira_history" },
+      { name: "Jen", handle: "@jen_labs" }
+    ];
+
+    let demoPosts = [
+      {
+        id: 1,
+        author: "Ada",
+        handle: "@ada_codes",
+        text: "Built this Bitter layout using HTML5 semantics and CSS Flexbox. It is surprisingly readable.",
+        timestamp: "just now"
+      },
+      {
+        id: 2,
+        author: "Sam",
+        handle: "@sam_student",
+        text: "Flexbox makes responsive columns much easier than older float-based layouts.",
+        timestamp: "5 min"
+      },
+      {
+        id: 3,
+        author: "Demo Learner",
+        handle: "@demo_learner",
+        text: "Practicing event handling by wiring the Post button to the in-memory feed.",
+        timestamp: "12 min"
+      }
+    ];
+
+    const otherUsersList = document.getElementById("otherUsersList");
+    const feedScroll = document.getElementById("feedScroll");
+    const highlightedBody = document.getElementById("highlightedBody");
+    const statPosts = document.getElementById("statPosts");
+
+    const textarea = document.getElementById("newPostText");
+    const charCount = document.getElementById("charCount");
+    const btnPost = document.getElementById("btnPost");
+
+    const btnLogin = document.getElementById("btnLogin");
+    const btnLogout = document.getElementById("btnLogout");
+    const btnSettings = document.getElementById("btnSettings");
+
+    let isLoggedIn = false;
+
+    function renderUsers() {
+      otherUsersList.innerHTML = "";
+      demoUsers.forEach(user => {
+        const li = document.createElement("li");
+        const nameSpan = document.createElement("span");
+        const handleSpan = document.createElement("span");
+
+        nameSpan.textContent = user.name;
+        handleSpan.textContent = user.handle;
+        handleSpan.className = "handle";
+
+        li.appendChild(nameSpan);
+        li.appendChild(handleSpan);
+
+        li.addEventListener("click", () => {
+          highlightedBody.textContent =
+            user.name + " is selected. In a real application this area might show a pinned post or profile summary.";
+        });
+
+        otherUsersList.appendChild(li);
+      });
+    }
+
+    function renderFeed() {
+      feedScroll.innerHTML = "";
+      demoPosts.forEach((post, index) => {
+        const card = document.createElement("article");
+        card.className = "post" + (index % 2 === 1 ? " alt" : "");
+        card.setAttribute("aria-label", "Post by " + post.author);
+
+        const meta = document.createElement("div");
+        meta.className = "post-meta";
+
+        const left = document.createElement("span");
+        left.innerHTML = "<span class=\"handle\">" + post.handle +
+          "</span>&nbsp;&middot;&nbsp;" + post.author;
+
+        const right = document.createElement("span");
+        right.textContent = post.timestamp + " ago";
+
+        meta.appendChild(left);
+        meta.appendChild(right);
+
+        const body = document.createElement("div");
+        body.className = "post-body";
+        body.textContent = post.text;
+
+        card.appendChild(meta);
+        card.appendChild(body);
+        feedScroll.appendChild(card);
+      });
+
+      statPosts.textContent = demoPosts.length.toString();
+      feedScroll.scrollTop = feedScroll.scrollHeight;
+    }
+
+    function updateCharCount() {
+      const len = textarea.value.length;
+      charCount.textContent = len + " / 280 characters";
+    }
+
+    function addPost() {
+      const text = textarea.value.trim();
+      if (!text) {
+        alert("Please write a short message before posting.");
+        return;
+      }
+
+      demoPosts.push({
+        id: demoPosts.length + 1,
+        author: "Demo Learner",
+        handle: "@demo_learner",
+        text,
+        timestamp: "0 min"
+      });
+
+      textarea.value = "";
+      updateCharCount();
+      renderFeed();
+    }
+
+    function toggleLogin(state) {
+      isLoggedIn = state;
+      btnLogin.disabled = isLoggedIn;
+      btnLogout.disabled = !isLoggedIn;
+      textarea.disabled = !isLoggedIn;
+      btnPost.disabled = !isLoggedIn;
+
+      const bio = document.getElementById("currentUserBio");
+      if (isLoggedIn) {
+        bio.textContent =
+          "Logged in locally. In a real deployment this would require server-side authentication.";
+      } else {
+        bio.textContent =
+          "Viewing in guest mode. Log in to simulate posting to the feed (local browser only).";
+      }
+    }
+
+    // Event wiring
+    textarea.addEventListener("input", updateCharCount);
+    btnPost.addEventListener("click", addPost);
+
+    btnLogin.addEventListener("click", () => {
+      toggleLogin(true);
+      alert("This is a simulated login for educational demonstrations. No real accounts are used.");
+    });
+
+    btnLogout.addEventListener("click", () => {
+      toggleLogin(false);
+      alert("You are now logged out of this demo environment.");
+    });
+
+    btnSettings.addEventListener("click", () => {
+      alert(
+        "Settings would normally control themes, accessibility options, and privacy. " +
+        "In this educational mockup the button only shows this message."
+      );
+    });
+
+    // Initial render
+    renderUsers();
+    renderFeed();
+    toggleLogin(false);
+    updateCharCount();
+  </script>
+
+  <footer>
+    <h2>References (APA, for educational use)</h2>
+    <ol>
+      <li>
+        Mozilla Developer Network. (2025, October 2).
+        <em>HTML: HyperText Markup Language</em>. MDN Web Docs.
+        https://developer.mozilla.org/en-US/docs/Web/HTML 
+      </li>
+      <li>
+        Mozilla Developer Network. (2025, July 14).
+        <em>CSS flexible box layout</em>. MDN Web Docs.
+        https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout 
+      </li>
+      <li>
+        Mozilla Developer Network. (2025, August 28).
+        <em>Structuring content with HTML</em>. MDN Web Docs.
+        https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content 
+      </li>
+      <li>
+        Web Hypertext Application Technology Working Group. (2025).
+        <em>HTML living standard</em>. WHATWG.
+        https://html.spec.whatwg.org/multipage/ 
+      </li>
+      <li>
+        Mozilla Developer Network. (2025, July 14).
+        <em>CSS layout</em>. MDN Web Docs.
+        https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout 
+      </li>
+    </ol>
+  </footer>
+</body>
+</html>
