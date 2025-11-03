@@ -101,7 +101,7 @@ No internet connection or backend server is required.
 
 This project is released under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** license.
 
-© 2025 Scott Owen. Created with assistance from GPT-5 (OpenAI) for **educational demonstration purposes only**.
+**ChatGPT Link: [https://chatgpt.com/share/690925e3-efa4-800c-8f88-9d731da827a8](https://chatgpt.com/share/690925e3-efa4-800c-8f88-9d731da827a8) \. Created with assistance from GPT-5 (OpenAI) for **educational demonstration purposes only**.
 
 ---
 
